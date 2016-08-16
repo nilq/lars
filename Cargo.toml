@@ -1,0 +1,14 @@
+[package]
+name = "lars"
+version = "0.1.0"
+authors = ["nilq <i.am@nilq.dk>"]
+description = "A library for basic linear algebra"
+
+[lib]
+name = "lars"
+path = "src/lib.rs"
+num  = "0.1.32"
+
+[dependencies]
+num  = "0.1.32"
+rand = "0.3.14"
