@@ -67,4 +67,4 @@ fn matrix_stuff() {
 
 # TODO
 
-- Elementwise multiplication between matrix and vector.
+- Elementwise multiplication between matrix and vector : DONE
