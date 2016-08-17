@@ -2,12 +2,16 @@
 name = "lars"
 version = "0.1.0"
 authors = ["nilq <i.am@nilq.dk>"]
-description = "A library for basic linear algebra"
+description = "A library for basic linear algebra - based on numrs."
+keywords = ["math", "matrix", "vector"]
+license = "MIT License"
+repository = "https://github.com/nilq/lars"
+homepage = "https://github.com/nilq/lars"
+documentation = "https://github.com/nilq/lars"
 
 [lib]
 name = "lars"
 path = "src/lib.rs"
-num  = "0.1.32"
 
 [dependencies]
 num  = "0.1.32"

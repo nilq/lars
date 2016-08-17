@@ -1,4 +1,8 @@
+extern crate rand;
+
 use std::ops::{Index, Add, Sub, Mul, Div, Neg};
+use std::fmt;
+
 use common::Number;
 use vector;
 use vector::Vector;
@@ -7,6 +11,21 @@ pub struct Matrix<T: Number> {
     rows: usize,
     cols: usize,
     content: Vector<T>,
+}
+
+impl<T: Number + fmt::Display> fmt::Display for Matrix<T> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        try!(write!(f, "["));
+        for n in 0 .. self.rows {
+            try!(write!(f, "["));
+            for m in 0 .. self.cols {
+                try!(write!(f, "{}", self.get(n, m)));
+            }
+            try!(write!(f, "]"))
+        }
+        try!(write!(f, "]"));
+        Ok(())
+    }
 }
 
 impl<T: Number> Index<usize> for Matrix<T> {
@@ -130,6 +149,28 @@ impl<T: Number> Mul<T> for Matrix<T> {
             rows: self.rows,
             cols: self.cols,
             content: self.content * rhs,
+        }
+    }
+}
+
+impl<T: Number> Mul<Vector<T>> for Matrix<T> {
+    type Output = Vector<T>;
+
+    fn mul(self, rhs: Vector<T>) -> Vector<T> {
+        if self.cols == rhs.content.len() {
+            let mut pass = Vector::<T>::new(self.rows, T::zero());
+            for n in 0 .. self.rows {
+                for m in 0 .. rhs.content.len() {
+                    let mut product: T = T::zero();
+                    for k in 0 .. self.cols {
+                        product = product + self.get(n, k) * rhs.content[m];
+                    }
+                    pass.content.push(product);
+                }
+            }
+            pass
+        } else {
+            panic!("Can't multiply matrix with given vector!")
         }
     }
 }
@@ -263,10 +304,10 @@ pub fn zeros<T: Number>(rows: usize, cols: usize) -> Matrix<T> {
     }
 }
 
-pub fn random<T: Number>(rows: usize, cols: usize) -> Matrix<T> {
+pub fn random<T: Number + rand::Rand>(rows: usize, cols: usize) -> Matrix<T> {
     Matrix::<T> {
         rows: rows,
         cols: cols,
-        content: Vector::random(rows * cols),
+        content: vector::random(rows * cols),
     }
 }
