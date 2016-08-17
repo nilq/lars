@@ -10,13 +10,13 @@ use lars::vector:Vector;
 fn vector_stuff() {
     // Create 5 dimensional vector of 3.0s
     let v0 = Vector(5, 3.0);
-    let v1 = v0.clone()
+    let v1 = v0.clone();
     // Multiplying vectors
-    let mut v2 = v0 * v1
+    let mut v2 = v0.clone() * v1.clone();
     // Other operations
-    v2 = v0 + v1
-    v2 = v0 / v1
-    v2 = v0 - v1
+    v2 = v0.clone() + v1.clone();
+    v2 = v0.clone() / v1.clone();
+    v2 = v0.clone() - v1.clone();
     // Creating vector from elements
     let elements = [1.0, 3.0, 3.0, 7.0];
     let foo = vector::from(&elements);
@@ -35,11 +35,11 @@ fn matrix_stuff() {
     let m0 = Matrix(5, 5, 3.0);
     let m1 = m0.clone();
     // Multiplying matrices
-    let mut m2 = m0 * m1;
+    let mut m2 = m0.clone() * m1.clone();
     // Other operations
-    m2 = m0 + m1;
-    m2 = m0 / m1;
-    m2 = m0 - m1;
+    m2 = m0.clone() + m1.clone();
+    m2 = m0.clone() / m1.clone();
+    m2 = m0.clone() - m1.clone();
     // Creating 2 by 2 matrix from elements
     let elements = [1.0, 3.0, 3.0, 7.0];
     let foo = matrix::from(2, 2, &elements);
