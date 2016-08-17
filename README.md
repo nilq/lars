@@ -2,7 +2,7 @@
 A library implementing basic linear algebra in Rust.
 
 ---
-### Example use
+### Example use of `lars::vector`
 ```rust
 extern crate lars;
 use lars::vector;
@@ -23,4 +23,9 @@ fn vector_stuff() {
     // Random vector of length 42
     let bar = vector::random(42);
 }
+```
+
+### Example use of `lars::matrix`
+```rust
+
 ```
