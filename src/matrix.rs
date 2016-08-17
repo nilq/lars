@@ -158,15 +158,15 @@ impl<T: Number> Mul<Vector<T>> for Matrix<T> {
 
     fn mul(self, rhs: Vector<T>) -> Vector<T> {
         if self.cols == rhs.content.len() {
-            let mut pass = Vector::<T>::new(self.rows, T::zero());
-            for n in 0 .. self.rows {
-                for m in 0 .. rhs.content.len() {
-                    let mut product: T = T::zero();
-                    for k in 0 .. self.cols {
-                        product = product + self.get(n, k) * rhs.content[m];
-                    }
-                    pass.content.push(product);
+            let mut pass = Vector::<T>::new(0, T::zero());
+            let mut i = 0;
+            while i < self.content.len() / self.cols {
+                let mut p = T::zero();
+                for n in 0 .. self.cols {
+                    p = p + self.content[(i * self.cols) + n] * rhs.content[n];
                 }
+                pass.content.push(p);
+                i += 1
             }
             pass
         } else {
@@ -174,6 +174,7 @@ impl<T: Number> Mul<Vector<T>> for Matrix<T> {
         }
     }
 }
+
 
 impl<T: Number> Div<T> for Matrix<T> {
     type Output = Matrix<T>;
