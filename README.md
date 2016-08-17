@@ -62,3 +62,9 @@ fn matrix_stuff() {
     assert_eq!(m03.get(1, 7), 69); // true
 }
 ```
+
+---
+
+# TODO
+
+- Elementwise multiplication between matrix and vector.
