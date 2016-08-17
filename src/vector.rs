@@ -1,10 +1,25 @@
 extern crate rand;
+use std::fmt;
 
 use std::ops::{Index, IndexMut, Add, Sub, Mul, Div, Neg};
 use common::Number;
 
 pub struct Vector<T: Number> {
     pub content: Vec<T>,
+}
+
+impl<T: Number + fmt::Display> fmt::Display for Vector<T> {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        try!(write!(f, "["));
+        for n in 0 .. self.content.len() {
+            try!(write!(f, "{}", self.content[n]));
+            if x != self.content.len() {
+                try!(write!(f, ","))
+            }
+        }
+        try!(write!(f, "]"));
+        Ok(())
+    }
 }
 
 impl<T: Number> Index<usize> for Vector<T> {
