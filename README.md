@@ -59,6 +59,6 @@ fn matrix_stuff() {
     m03.reshape(2, 20);
     // Get and set elements of m03
     m03.set(1, 7, 69);
-    assert_eq(m03.get(1, 7), 69); // true
+    assert_eq!(m03.get(1, 7), 69); // true
 }
 ```
