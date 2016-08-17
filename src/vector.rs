@@ -13,7 +13,7 @@ impl<T: Number + fmt::Display> fmt::Display for Vector<T> {
         try!(write!(f, "["));
         for n in 0 .. self.content.len() {
             try!(write!(f, "{}", self.content[n]));
-            if x != self.content.len() {
+            if n != self.content.len() {
                 try!(write!(f, ","))
             }
         }

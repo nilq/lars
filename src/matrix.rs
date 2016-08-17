@@ -262,3 +262,11 @@ pub fn zeros<T: Number>(rows: usize, cols: usize) -> Matrix<T> {
         content: Vector::new(rows * cols, T::zero()),
     }
 }
+
+pub fn random<T: Number>(rows: usize, cols: usize) -> Matrix<T> {
+    Matrix::<T> {
+        rows: rows,
+        cols: cols,
+        content: Vector::random(rows * cols),
+    }
+}
