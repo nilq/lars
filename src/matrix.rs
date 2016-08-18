@@ -240,6 +240,14 @@ impl<T: Number> Matrix<T> {
         self.content.content.clone()
     }
 
+    pub fn get_cols(&self) -> usize {
+        self.cols.clone()
+    }
+
+    pub fn get_rows(&self) -> usize {
+        self.rows.clone()
+    }
+
     pub fn transpose(&mut self) {
         let mut pass = self.content.clone();
         for n in 0 .. self.rows {

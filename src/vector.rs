@@ -1,8 +1,11 @@
 extern crate rand;
+
 use std::fmt;
 
 use std::ops::{Index, IndexMut, Add, Sub, Mul, Div, Neg};
 use common::Number;
+
+use matrix::Matrix;
 
 pub struct Vector<T: Number> {
     pub content: Vec<T>,
@@ -90,6 +93,28 @@ impl<T: Number> Mul<Vector<T>> for Vector<T> {
             pass
         } else {
             panic!("Trying to multiply vectors of different dimensions!")
+        }
+    }
+}
+
+impl<T: Number> Mul<Matrix<T>> for Vector<T> {
+    type Output = Vector<T>;
+
+    fn mul(self, rhs: Matrix<T>) -> Vector<T> {
+        if rhs.get_cols() == rhs.get_vector().len() {
+            let mut pass = Vector::<T>::new(0, T::zero());
+            let mut i = 0;
+            while i < rhs.get_vector().len() / rhs.get_cols() {
+                let mut p = T::zero();
+                for n in 0 .. rhs.get_cols() {
+                    p = p + rhs.get_vector()[(i * rhs.get_cols()) + n] * self.content[n];
+                }
+                pass.content.push(p);
+                i += 1
+            }
+            pass
+        } else {
+            panic!("Can't multiply vector by given matrix!")
         }
     }
 }
