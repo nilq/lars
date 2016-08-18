@@ -1,10 +1,10 @@
 [package]
 name = "lars"
-version = "0.1.5"
+version = "0.1.6"
 authors = ["nilq <i.am@nilq.dk>"]
-description = "A library for basic linear algebra - based on numrs."
+description = "A library for basic linear algebra."
 keywords = ["math", "matrix", "vector"]
-license = "MIT License"
+license = "MIT"
 repository = "https://github.com/nilq/lars"
 homepage = "https://github.com/nilq/lars"
 documentation = "https://github.com/nilq/lars"
