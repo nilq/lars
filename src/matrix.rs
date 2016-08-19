@@ -21,7 +21,7 @@ impl<T: Number + fmt::Display> fmt::Display for Matrix<T> {
             for m in 0 .. self.cols {
                 try!(write!(f, "{}", self.get(n, m)));
             }
-            try!(write!(f, "]"))
+            try!(write!(f, "],\n"));
         }
         try!(write!(f, "]"));
         Ok(())

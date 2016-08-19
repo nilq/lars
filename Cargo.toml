@@ -1,6 +1,6 @@
 [package]
 name = "lars"
-version = "0.1.9"
+version = "0.2.1"
 authors = ["nilq <i.am@nilq.dk>"]
 description = "A library for basic linear algebra."
 keywords = ["math", "matrix", "vector"]
