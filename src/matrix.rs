@@ -188,6 +188,30 @@ impl<T: Number> Div<T> for Matrix<T> {
     }
 }
 
+impl<T: Number> Add<T> for Matrix<T> {
+    type Output = Matrix<T>;
+
+    fn add(self, rhs: T) -> Matrix<T> {
+        Matrix::<T> {
+            rows: self.rows,
+            cols: self.cols,
+            content: self.content + rhs,
+        }
+    }
+}
+
+impl<T: Number> Sub<T> for Matrix<T> {
+    type Output = Matrix<T>;
+
+    fn sub(self, rhs: T) -> Matrix<T> {
+        Matrix::<T> {
+            rows: self.rows,
+            cols: self.cols,
+            content: self.content - rhs,
+        }
+    }
+}
+
 impl<T: Number> PartialEq for Matrix<T> {
     fn eq(&self, other: &Matrix<T>) -> bool {
         if self.rows != other.rows

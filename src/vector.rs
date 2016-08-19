@@ -167,6 +167,28 @@ impl<T: Number> Div<T> for Vector<T> {
     }
 }
 
+impl<T: Number> Add<T> for Vector<T> {
+    type Output = Vector<T>;
+    fn add(self, rhs: T) -> Vector<T> {
+        let mut v = self.clone();
+        for n in 0 .. self.len() {
+            v.content[n] = rhs + self.content[n];
+        }
+        v
+    }
+}
+
+impl<T: Number> Sub<T> for Vector<T> {
+    type Output = Vector<T>;
+    fn sub(self, rhs: T) -> Vector<T> {
+        let mut v = self.clone();
+        for n in 0 .. self.len() {
+            v.content[n] = rhs - self.content[n];
+        }
+        v
+    }
+}
+
 impl<T: Number> PartialEq for Vector<T> {
     fn eq(&self, other: &Vector<T>) -> bool {
         if self.len() != other.len() {
