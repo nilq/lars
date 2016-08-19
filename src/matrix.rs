@@ -175,6 +175,71 @@ impl<T: Number> Mul<Vector<T>> for Matrix<T> {
     }
 }
 
+impl<T: Number> Add<Vector<T>> for Matrix<T> {
+    type Output = Vector<T>;
+
+    fn add(self, rhs: Vector<T>) -> Vector<T> {
+        if self.cols == rhs.content.len() {
+            let mut pass = Vector::<T>::new(0, T::zero());
+            let mut i = 0;
+            while i < self.content.len() / self.cols {
+                let mut p = T::zero();
+                for n in 0 .. self.cols {
+                    p = p + self.content[(i * self.cols) + n] + rhs.content[n];
+                }
+                pass.content.push(p);
+                i += 1
+            }
+            pass
+        } else {
+            panic!("Can't add matrix with given vector!")
+        }
+    }
+}
+
+impl<T: Number> Sub<Vector<T>> for Matrix<T> {
+    type Output = Vector<T>;
+
+    fn add(self, rhs: Vector<T>) -> Vector<T> {
+        if self.cols == rhs.content.len() {
+            let mut pass = Vector::<T>::new(0, T::zero());
+            let mut i = 0;
+            while i < self.content.len() / self.cols {
+                let mut p = T::zero();
+                for n in 0 .. self.cols {
+                    p = p + self.content[(i * self.cols) + n] - rhs.content[n];
+                }
+                pass.content.push(p);
+                i += 1
+            }
+            pass
+        } else {
+            panic!("Can't subtract matrix with given vector!")
+        }
+    }
+}
+
+impl<T: Number> Div<Vector<T>> for Matrix<T> {
+    type Output = Vector<T>;
+
+    fn div(self, rhs: Vector<T>) -> Vector<T> {
+        if self.cols == rhs.content.len() {
+            let mut pass = Vector::<T>::new(0, T::zero());
+            let mut i = 0;
+            while i < self.content.len() / self.cols {
+                let mut p = T::zero();
+                for n in 0 .. self.cols {
+                    p = p + self.content[(i * self.cols) + n] / rhs.content[n];
+                }
+                pass.content.push(p);
+                i += 1
+            }
+            pass
+        } else {
+            panic!("Can't divide matrix with given vector!")
+        }
+    }
+}
 
 impl<T: Number> Div<T> for Matrix<T> {
     type Output = Matrix<T>;
