@@ -347,11 +347,11 @@ impl<T: Number> Matrix<T> {
         self.content = pass
     }
 
-    pub fn transposed(&self) -> Vector<T> {
-        let mut pass = self.content.clone();
+    pub fn transposed(&self) -> Matrix<T> {
+        let mut pass = self.clone();
         for n in 0 .. self.rows {
             for m in 0 .. self.cols {
-                pass[m * self.cols + n] = self.get(n, m);
+                pass.content[m * self.cols + n] = self.get(n, m);
             }
         }
         pass
