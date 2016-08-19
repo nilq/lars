@@ -200,7 +200,7 @@ impl<T: Number> Add<Vector<T>> for Matrix<T> {
 impl<T: Number> Sub<Vector<T>> for Matrix<T> {
     type Output = Vector<T>;
 
-    fn add(self, rhs: Vector<T>) -> Vector<T> {
+    fn sub(self, rhs: Vector<T>) -> Vector<T> {
         if self.cols == rhs.content.len() {
             let mut pass = Vector::<T>::new(0, T::zero());
             let mut i = 0;
