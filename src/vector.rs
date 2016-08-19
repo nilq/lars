@@ -119,6 +119,72 @@ impl<T: Number> Mul<Matrix<T>> for Vector<T> {
     }
 }
 
+impl<T: Number> Div<Matrix<T>> for Vector<T> {
+    type Output = Vector<T>;
+
+    fn div(self, rhs: Matrix<T>) -> Vector<T> {
+        if rhs.get_cols() == rhs.get_vector().len() {
+            let mut pass = Vector::<T>::new(0, T::zero());
+            let mut i = 0;
+            while i < rhs.get_vector().len() / rhs.get_cols() {
+                let mut p = T::zero();
+                for n in 0 .. rhs.get_cols() {
+                    p = p + rhs.get_vector()[(i * rhs.get_cols()) + n] / self.content[n];
+                }
+                pass.content.push(p);
+                i += 1
+            }
+            pass
+        } else {
+            panic!("Can't divide vector by given matrix!")
+        }
+    }
+}
+
+impl<T: Number> Add<Matrix<T>> for Vector<T> {
+    type Output = Vector<T>;
+
+    fn add(self, rhs: Matrix<T>) -> Vector<T> {
+        if rhs.get_cols() == rhs.get_vector().len() {
+            let mut pass = Vector::<T>::new(0, T::zero());
+            let mut i = 0;
+            while i < rhs.get_vector().len() / rhs.get_cols() {
+                let mut p = T::zero();
+                for n in 0 .. rhs.get_cols() {
+                    p = p + rhs.get_vector()[(i * rhs.get_cols()) + n] + self.content[n];
+                }
+                pass.content.push(p);
+                i += 1
+            }
+            pass
+        } else {
+            panic!("Can't add vector by given matrix!")
+        }
+    }
+}
+
+impl<T: Number> Sub<Matrix<T>> for Vector<T> {
+    type Output = Vector<T>;
+
+    fn sub(self, rhs: Matrix<T>) -> Vector<T> {
+        if rhs.get_cols() == rhs.get_vector().len() {
+            let mut pass = Vector::<T>::new(0, T::zero());
+            let mut i = 0;
+            while i < rhs.get_vector().len() / rhs.get_cols() {
+                let mut p = T::zero();
+                for n in 0 .. rhs.get_cols() {
+                    p = p + rhs.get_vector()[(i * rhs.get_cols()) + n] - self.content[n];
+                }
+                pass.content.push(p);
+                i += 1
+            }
+            pass
+        } else {
+            panic!("Can't subtract vector by given matrix!")
+        }
+    }
+}
+
 impl<T: Number> Div<Vector<T>> for Vector<T> {
     type Output = Vector<T>;
     fn div(self, rhs: Vector<T>) -> Vector<T> {
