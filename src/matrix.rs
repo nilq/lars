@@ -463,6 +463,10 @@ impl<T: Number> Matrix<T> {
             panic!("Matrix must be a square!")
         }
     }
+
+    pub fn powf(&self, pow: f64) {
+        self.content.powf(pow);
+    }
 }
 
 pub fn from<T: Number>(rows: usize, cols: usize, elements: &[T]) -> Matrix<T> {

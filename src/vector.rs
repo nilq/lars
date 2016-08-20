@@ -65,7 +65,6 @@
 //! }
 //! ```
 
-
 extern crate rand;
 
 use std::fmt;
@@ -349,6 +348,12 @@ impl<T: Number> Vector<T> {
         let d = vec![default; length];
         Vector::<T> {
             content: d,
+        }
+    }
+
+    pub fn powf(&self, pow: f64) {
+        for n in 0 .. self.len() {
+            self.content[n].powf(pow);
         }
     }
 }
