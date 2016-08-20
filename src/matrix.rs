@@ -1,3 +1,98 @@
+//! The Matrix type overloads all basic arithmetic operations: addition, subtraction,
+//! multiplication, division - along with the possibility of getting negative and index
+//! in/of given matrix. Matrix also provides fancy methods for e.g. getting and setting elements.
+//!
+//! # Example creation
+//! ```
+//! use lars::matrix;
+//! use lars::matrix::Matrix;
+//!
+//! fn matrix_creation() {
+//!     // Create 3 by 5 matrix of 3.0s
+//!     let m1 = Matrix::new(3, 5, 3.0);
+//!
+//!     // Create 3 by 5 matrix of given elements
+//!     let elements = [1.0, 3.0, 3.0, 7.0];
+//!     let m2 = matrix::from(3, 5, &elements);
+//!
+//!     // Create identity matrix of size 5
+//!     let m3 = matrix::identity(5);
+//!
+//!     // Create 3 by 5 random matrix
+//!     let m4 = matrix::random(3, 5);
+//!
+//!     // Create 3 by 5 matrix of 0s
+//!     let m5 = matrix::zeros(3, 5);
+//!
+//!     // Create matrix of zeros of dimension based on other matrix
+//!     let m6 = matrix::zeros_like(m1.clone()); // Based on m1, thus 3 by 5
+//! }
+//! ```
+//!
+//! # Example operations
+//! ```
+//! use lars::matrix;
+//! use lars::matrix::Matrix;
+//!
+//! fn matrix_operation() {
+//!     // Create matrices
+//!     let mut foo = matrix::new(5, 5, 2.0);
+//!     let mut bar = matrix::new(5, 5, 1.5);
+//!
+//!     // Do operations
+//!     let product = foo.clone() * bar.clone();
+//!     let sum     = foo.clone() + bar.clone();
+//!     let delta   = foo.clone() - bar.clone();
+//!     let frac    = foo.clone() / bar.clone();
+//!
+//!     // Operations with non-matrices
+//!     let doubled = foo.clone() * 2;
+//!     let offset  = foo.clone() + 42;
+//!     let subbed  = foo.clone() - 100;
+//!     let halfed  = foo.clone() / 2;
+//!
+//!     // Transposing a matrix 'foo'
+//!     foo.transpose();
+//!
+//!     // Getting transposed matrix
+//!     let trans_foo = foo.transposed();
+//!
+//!     // Get trace of matrix
+//!     let trace_bar = bar.trace();
+//!
+//!     // Set element of a matrix
+//!     foo.set(2, 2, 4.2);
+//!
+//!     // Get element of a matrix
+//!     let element = bar.get(2, 3);
+//!
+//!     let mut foobar = matrix::new(4, 4, 0.0);
+//!
+//!     // Reshape a matrix
+//!     foobar.reshape(8, 2); // 4 by 4 >>> 8 by 2
+//! }
+//! ```
+//!
+//! # Example matrix * vector
+//! ```
+//! use lars::matrix;
+//! use lars::matrix::Matrix;
+//!
+//! use lars::vector;
+//! use lars::vector::Vector;
+//!
+//! fn matrix_vector_dot() {
+//!     // Create 3 by 5 matrix of 3.0s
+//!     let foo = Matrix::new(3, 5, 3.0);
+//!
+//!     // Create 3 dimensional vector of 6.0s
+//!     let bar = Vector::new(3, 6.0);
+//!
+//!     // Multiply vector by matrix
+//!     let foobar = foo * bar;
+//! }
+//! ```
+
 extern crate rand;
 
 use std::ops::{Index, Add, Sub, Mul, Div, Neg};
