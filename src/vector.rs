@@ -1,3 +1,71 @@
+//! The Vector type overloads all basic arithmetic operations: addition, subtraction,
+//! multiplication, division - along with the possibility of getting negative and index
+//! in/of given vector.
+//!
+//! # Example creation
+//!
+//! ```
+//! use lars::vector;
+//! use lars::vector::Vector;
+//!
+//! fn vector_creation() {
+//!     // Create 12 dimensional vector of 6.0s
+//!     let v1 = Vector::new(12, 6.0);
+//!
+//!     // Create vector from elements
+//!     let elements = [1.0, 3.0, 3.0, 7.0];
+//!     let v2 = vector::from(&elements);
+//!
+//!     // Create random vector of length 12
+//!     let v3 = vector::random(12);
+//! }
+//! ```
+//!
+//! # Example operations
+//! ```
+//! use lars::vector;
+//! use lars::vector::Vector;
+//!
+//! fn vector_operation() {
+//!     // Create vectors
+//!     let mut foo = vector::new(5, 2.0);
+//!     let mut bar = vector::new(5, 1.5);
+//!
+//!     // Do operations
+//!     let product = foo.clone() * bar.clone();
+//!     let sum     = foo.clone() + bar.clone();
+//!     let delta   = foo.clone() - bar.clone();
+//!     let frac    = foo.clone() / bar.clone();
+//!
+//!     // Operations with non-vectors
+//!     let doubled = foo.clone() * 2;
+//!     let offset  = foo.clone() + 42;
+//!     let subbed  = foo.clone() - 100;
+//!     let halfed  = foo.clone() / 2;
+//! }
+//! ```
+//!
+//! # Example vector * matrix
+//! ```
+//! use lars::vector;
+//! use lars::vector::Vector;
+//!
+//! use lars::matrix;
+//! use lars::matrix::Matrix;
+//!
+//! fn vector_matrix_dot() {
+//!     // Create 3 dimensional vector of 6.0s
+//!     let foo = Vector::new(3, 6.0);
+//!
+//!     // Create 3 by 5 matrix of 3.0s
+//!     let bar = Matrix::new(3, 5, 3.0);
+//!
+//!     // Multiply matrix by vector
+//!     let foobar = foo * bar;
+//! }
+//! ```
+
+
 extern crate rand;
 
 use std::fmt;
