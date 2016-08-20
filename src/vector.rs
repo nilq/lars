@@ -272,7 +272,7 @@ impl<T: Number + Neg<Output = T>> Neg for Vector<T> {
     fn neg(self) -> Vector<T> {
         let mut v = self.clone();
         for n in 0 .. self.len() {
-            v.content[n] = -self.content[n]
+            v.content[n] = -self.content[n];
         }
         v
     }
@@ -283,7 +283,7 @@ impl<T: Number> Mul<T> for Vector<T> {
     fn mul(self, rhs: T) -> Vector<T> {
         let mut v = self.clone();
         for n in 0 .. self.len() {
-            v.content[n] = rhs * self.content[n];
+            v.content[n] = self.content[n] * rhs;
         }
         v
     }
@@ -294,7 +294,7 @@ impl<T: Number> Div<T> for Vector<T> {
     fn div(self, rhs: T) -> Vector<T> {
         let mut v = self.clone();
         for n in 0 .. self.len() {
-            v.content[n] = rhs / self.content[n];
+            v.content[n] = self.content[n] / rhs;
         }
         v
     }
@@ -305,7 +305,7 @@ impl<T: Number> Add<T> for Vector<T> {
     fn add(self, rhs: T) -> Vector<T> {
         let mut v = self.clone();
         for n in 0 .. self.len() {
-            v.content[n] = rhs + self.content[n];
+            v.content[n] = self.content[n] + rhs;
         }
         v
     }
@@ -316,7 +316,7 @@ impl<T: Number> Sub<T> for Vector<T> {
     fn sub(self, rhs: T) -> Vector<T> {
         let mut v = self.clone();
         for n in 0 .. self.len() {
-            v.content[n] = rhs - self.content[n];
+            v.content[n] = self.content[n] - rhs;
         }
         v
     }
